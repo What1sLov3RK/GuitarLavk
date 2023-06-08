@@ -133,8 +133,6 @@ STATICFILES_DIRS = [
     BASE_DIR / 'media',
 ]
 
-STATIC_ROOT = 'static'
-
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',

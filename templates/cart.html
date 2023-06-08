@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="cart-wrapper">
+    <div id="cart-top">
+        <div>  Найменування</div>
+        <div>  Кількість</div>
+        <div>  Ціна</div>
+    </div>
+    <div id="checkout">
+
+<h2> Оформлення замовлення</h2>
+        <br>
+        <form method="POST">
+  {% csrf_token %}
+  {{ order_form.as_p }}
+  <button type="submit">Submit Order</button>
+</form>
+        <h4> До оплати : {{ total_price }} $</h4>
+    </div>
+    {% for item in cart_items %}
+    <div class="cart-item">
+        <div></div>
+        <div class="cart-item-picture">
+            <img src="/media/{{item.product.picture}}">
+        </div>
+        <div class="cart-item-description">
+            {{ item.product.type}},
+            {{ item.product.brand}}
+            {{ item.product.model}}
+            <br>
+            {{ item.product.description}}
+        </div>
+        <div class="cart-item-quantity">
+            <a class="cart-quantity-buttons" href="{% url 'remove_from_cart' cart_item_id=item.id %}">
+                -
+            </a>
+            {{ item.quantity}}
+            <a class="cart-quantity-buttons" href="{% url 'add_to_cart' product_slug=item.product.slug %}">
+                +
+            </a>
+        </div>
+        <div class="cart-item-price">{{ item.get_item_price }} $</div>
+    </div>
+</div>
+    {% endfor %}
+{% endblock %}

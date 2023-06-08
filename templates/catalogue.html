@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div id="catalogue-wrapper">
+        <div id="filters-text">
+            <h2>Каталог</h2>
+            <br>
+        </div>
+        <div id="catalogue-sort">
+            <span>Кількість товарів: {{ count }}</span>
+            <span id="catalogue-sort-available">В наявності
+                <input type="checkbox" class="checkbox-catalogue-sort-available">
+            </span>
+
+        </div>
+        <div id="catalogue-filters">
+            <form method="get">
+                <button type="submit" id="submit_filters">Застосувати фільтри</button>
+                {{ category_filter_form.categories }}
+            </form>
+        </div>
+        <div id="catalogue-products">
+        {% if products %}
+            {% for product in products %}
+                 <a href="{% url 'product' product_slug=product.slug %}" class="product-card">
+                     <div id="my-card" class="card">
+                         <img class="card-image" src="../media/{{product.picture}}" alt="dick">
+                         <div class="card-body">
+                             <p class="card-text">
+                                 <span class="card-name">{{product.type}} {{ product.brand }}</span>
+                                 <span class="card-model">{{ product.model }}</span>
+                                 <span>Ціна: {{ product.price }}$</span>
+                            </p>
+                        </div>
+                     </div>
+                 </a>
+                {% endfor %}
+        {% else %}
+            <h1 style="color:white;">No products found</h1>
+        {% endif %}
+        </div>
+    </div>
+{% endblock %}

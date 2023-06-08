@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container py-5">
+	<h1 style="color:white">Register</h1>
+	<form method="POST" style="color:white">
+		{% csrf_token %}
+		{%   for register_field in form %}
+            <p>
+            <label class="form-label" for="{{ register_field.id_for_label }}">{{ register_field.label }}</label>
+            {{ register_field }}
+            </p>
+            <div class="form-error">{{ register_field.errors }}</div>
+        {% endfor %}
+		<button class="register-button" type="submit">Register</button>
+	</form>
+	<p class="text-center">If you already have an account, <a href="/login">login</a> instead.</p>
+</div>
+
+{% endblock %}

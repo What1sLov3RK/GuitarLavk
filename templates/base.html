@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/css/stylesheet.css" type="text/css" >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
+  <title>Guitar Lavka</title>
+</head>
+<body id="body">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+    <div id="brow">
+        <div id="socials-container">
+                <a href="" class="social-links>"><img src="/static/images/inst.svg" alt="inst" class="socials"></a>
+                <a href="" class="social-links>"><img src="/static/images/tg.svg" alt="inst" class="socials"></a>
+                <a href="" class="social-links>"><img src="/static/images/youtube.svg" alt="inst" class="socials"></a>
+        </div>
+        <div id="telephone-container">
+                <a href= "tel:+380630215097" id="telephone-link">
+                    <img src="/static/images/telephone.png" alt="telephone-png" id="telephone-logo">+380630215097
+                </a>
+            <h6>Щодня з 9:00 - 19:00</h6>
+
+        </div>
+    </div>
+    <div id="top-main">
+        <div class="col-3"></div>
+            <div id="navigation" class="col-6">
+                <a href="{% url 'home'%}" class="navigation-links">головна</a>
+                <a href="{% url 'catalogue'%}" class="navigation-links">КАТАЛОГ</a>
+                <a href="" class="navigation-links">ПОСЛУГИ</a>
+                <a href="" class="navigation-links">ПРо НАС</a>
+                <a href="{% url 'cart'%}" class="navigation-links">ДОсТАВКА</a>
+                <a href="" class="navigation-links">ВІДГУК</a>
+                <a href="" class="navigation-links">навчання</a>
+                <a href="" class="navigation-links">КОНТАКТ</a>
+                <a href="" class="navigation-links">ОПТ</a>
+            </div>
+        <div id="cart" class="col-3">
+            <a href="{% url 'login'%}">
+                <img src="/static/images/user_icon.png" width="23px" height="23px" style="margin-right:14px;">
+            </a>
+            <a href="{%  url 'cart'%}">
+                <div id="cart-display-quantity">{{cart_quantity}}</div>
+                <img src="/static/images/shopping_basket.png" id="shopping-cart">
+            </a>
+        </div>
+    </div>
+{% block content %}
+
+
+
+{% endblock %}
+</body>
+<footer>
+    <div id="footer_wrapper">
+        <div class="guitar-lavka-foot">
+            <img src="/static/images/Logo_footer.png" height="185" width="386">
+            <br>
+            <h2>Ми працюємо по всій Україні,<br> тому можемо зробити онлайн-показ інструменту та доставити його до ваших дверей</h2>
+            <br>
+            <br>
+            <h2>Є питання?</h2>
+            <a href="tel:+380630215097">+380630215097</a>
+            <br>
+            <br>
+            <h2>ЩОДЕННО З 10:00 до 20:00</h2>
+            <h3>info@guitarlavka.ua</h3>
+        </div>
+
+        <div>
+        </div>
+
+        <div>
+        <div id="footer-nav-links">
+            <ul>
+            <li><a class="footer-big-link" href="">Каталог</a></li>
+                <li><a class="footer-small-link" href="http://127.0.0.1:8000/catalogue/?categories=1">Гітари</a></li>
+                <li><a class="footer-small-link" href="http://127.0.0.1:8000/catalogue/?categories=2">Укулеле</a></li>
+                <li><a class="footer-small-link" href="http://127.0.0.1:8000/catalogue/?categories=6">Аксесуари</a></li>
+                <li><a class="footer-small-link" href="http://127.0.0.1:8000/catalogue/?categories=3">Струни</a></li>
+            </ul>
+
+            <ul>
+                <li><a class="footer-big-link" href="">Сервіс</a></li>
+                <li><a class="footer-small-link" href="{% url 'cart'%}">Оплата</a></li>
+                <li><a class="footer-small-link" href="">Гарантія</a></li>
+                <li><a class="footer-small-link" href="">Доставка</a></li>
+            </ul>
+
+            <ul>
+                <li><a class="footer-big-link" href="{% url 'catalogue'%}">Послуги</a></li>
+                <li><a class="footer-small-link" href="">Ремонт</a></li>
+                <li><a class="footer-small-link" href="{% url 'catalogue'%}">Онлайн підбір</a></li>
+                <li><a class="footer-small-link" href="">Тренінг</a></li>
+                <li><a class="footer-small-link" href="{% url 'catalogue'%}">Б/У</a></li>
+            </ul>
+
+        </div>
+
+            <div id="footer-image">
+                <img src="/static/images/footer-image-insta.png">
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+</html>

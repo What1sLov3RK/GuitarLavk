@@ -2,7 +2,6 @@ from django.contrib.auth.views import LoginView
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
-
 from .models import Product, Cart, CartItem, Order
 from .forms import CategoryFilterForm, RegisterForm, OrderForm
 from django.contrib.auth import login, authenticate, logout

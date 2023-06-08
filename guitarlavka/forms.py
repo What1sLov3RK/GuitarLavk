@@ -8,7 +8,7 @@ class CategoryFilterForm(forms.Form):
     categories = forms.ModelMultipleChoiceField(
         queryset=Categories.objects.all(),
         required=False,
-        widget=forms.CheckboxSelectMultiple(attrs={'required':False})
+        widget=forms.CheckboxSelectMultiple(attrs={'required': False})
     )
 
     class Meta:

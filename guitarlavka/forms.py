@@ -43,11 +43,11 @@ class RegisterForm(UserCreationForm):
 
 
 class OrderForm(forms.Form):
-    first_name = forms.CharField(widget=forms.Textarea)
-    last_name = forms.CharField(widget=forms.Textarea)
-    telephone = forms.CharField(widget=forms.Textarea)
-    address = forms.CharField(widget=forms.Textarea)
-    comment = forms.CharField(widget=forms.Textarea, required=False)
+    first_name = forms.CharField(widget=forms.Textarea(attrs={'class': "Order-form"}), empty_value='Імя', error_messages={'required': 'dick'})
+    last_name = forms.CharField(widget=forms.Textarea(attrs={'class': "Order-form"}), empty_value='Прізвище')
+    telephone = forms.CharField(widget=forms.Textarea(attrs={'class': "Order-form"}), empty_value='Номер телефону')
+    address = forms.CharField(widget=forms.Textarea(attrs={'class': "Order-form"}), empty_value='Адреса')
+    comment = forms.CharField(widget=forms.Textarea(attrs={'class': "Order-form"}), empty_value='Коментар', required=False)
 
     class Meta:
         model = Order

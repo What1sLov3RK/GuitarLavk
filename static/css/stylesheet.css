@@ -8,6 +8,7 @@ html{
     background-color: #131218;
     margin:0;
     padding:0;
+    min-height: 750px;
 }
 
 #brow{
@@ -407,7 +408,6 @@ html{
 }
 
 footer{
-    margin-top:1000px;
     width:100%;
     display:flex;
     justify-content: center;
@@ -701,7 +701,27 @@ footer{
     color: rgba(255,255,255,1)
 }
 
-form textarea{
-    width: 400px;
+#checkout > form > p {
+    display:flex;
+    justify-content:space-between;
+    width:225px;
+}
+
+#checkout > form > p > textarea {
+    margin-top:4px;
+    width:140px;
     height:20px;
 }
+
+#button-order-submit{
+    border-radius: 5px;
+    background-color: rgba(255,255,255,0.7);
+    border: 0;
+}
+
+.link-order-details{
+    margin-top:200px;
+    text-decoration: none;
+    color:rgba(255,255,255,0.8);
+}
+

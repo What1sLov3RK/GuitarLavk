@@ -13,9 +13,9 @@
         <form method="POST">
   {% csrf_token %}
   {{ order_form.as_p }}
-  <button type="submit">Submit Order</button>
+            <h4> До оплати : {{ total_price }} $</h4>
+  <button type="submit" id="button-order-submit">Submit Order</button>
 </form>
-        <h4> До оплати : {{ total_price }} $</h4>
     </div>
     {% for item in cart_items %}
     <div class="cart-item">

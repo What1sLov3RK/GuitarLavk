@@ -16,4 +16,3 @@ COPY . /app/
 ENV DJANGO_SETTINGS_MODULE=GuitarLavk.settings \
     PYTHONUNBUFFERED=1
 
-RUN python manage.py collectstatic --noinput

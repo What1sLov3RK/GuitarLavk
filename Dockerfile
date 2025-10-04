@@ -13,7 +13,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . /app/
 
-RUN python manage.py collectstatic --noinput
-
 ENV DJANGO_SETTINGS_MODULE=GuitarLavk.settings \
     PYTHONUNBUFFERED=1
+
+RUN python manage.py collectstatic --noinput

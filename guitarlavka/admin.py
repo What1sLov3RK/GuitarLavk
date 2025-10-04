@@ -11,7 +11,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(OrderItem)
-class ProductAdmin(admin.ModelAdmin):
+class OrderItemAdmin(admin.ModelAdmin):
     search_fields = ('user', 'model')
 
 

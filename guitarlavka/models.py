@@ -40,6 +40,7 @@ class Cart(models.Model):
         total_price = sum(item.product.price * item.quantity for item in cart_items)
         return total_price
 
+
 class CartItem(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.SET_NULL, blank=True, null=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)

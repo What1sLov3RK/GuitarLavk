@@ -1,8 +1,9 @@
 django-filter~=23.2
 asgiref==3.6.0
 Django==4.1.7
-django-filter==23.2
 Pillow==9.5.0
 python-decouple==3.7
 sqlparse==0.4.3
 tzdata==2022.7
+whitenoise==6.11.0
+gunicorn==23.0.0

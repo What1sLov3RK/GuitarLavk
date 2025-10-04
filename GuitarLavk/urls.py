@@ -4,7 +4,6 @@ from guitarlavka import views
 from guitarlavka.views import *
 from django.conf import settings
 from django.conf.urls.static import static
-from django.views.decorators.cache import cache_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),

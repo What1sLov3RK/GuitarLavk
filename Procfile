@@ -1,1 +1,1 @@
-heroku ps:scale web=1
+web: gunicorn GuitarLavk.wsgi:application --bind 0.0.0.0:$PORT

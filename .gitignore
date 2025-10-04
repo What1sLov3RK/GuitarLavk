@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.sqlite3
+env/
+venv/
+GuitarLavk/__pycache__/
+
+# Django
+*.log
+*.pot
+*.mo
+*.db
+*.sqlite3
+/staticfiles/
+media/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Docker
+*.dockerfile
+docker-compose.override.yml
+
+# IDE / Editor
+.idea/
+
+.DS_Store

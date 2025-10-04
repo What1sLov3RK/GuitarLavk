@@ -18,4 +18,4 @@ ENV DJANGO_SETTINGS_MODULE=GuitarLavk.settings \
     PYTHONUNBUFFERED=1 \
     PORT=8000
 
-CMD python manage.py collectstatic --noinput && gunicorn GuitarLavk.wsgi:application --bind 0.0.0.0:$PORT
+CMD ["sh", "-c", "python manage.py collectstatic --noinput && gunicorn GuitarLavk.wsgi:application --bind 0.0.0.0:${PORT:-8000}"]

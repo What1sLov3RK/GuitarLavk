@@ -17,5 +17,3 @@ RUN python manage.py collectstatic --noinput
 
 ENV DJANGO_SETTINGS_MODULE=GuitarLavk.settings \
     PYTHONUNBUFFERED=1
-
-CMD gunicorn GuitarLavk.wsgi:application --bind 0.0.0.0:${PORT:-8000}

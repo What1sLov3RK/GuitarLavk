@@ -8,12 +8,14 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
-COPY requirements.txt /app/
+COPY requirements.txt .
+
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . /app/
+COPY . .
 
 ENV DJANGO_SETTINGS_MODULE=GuitarLavk.settings \
-    PYTHONUNBUFFERED=1
+    PYTHONUNBUFFERED=1 \
+    PORT=8000
 
-RUN python manage.py collectstatic --noinput
+CMD python manage.py collectstatic --noinput && gunicorn GuitarLavk.wsgi:application --bind 0.0.0.0:$PORT

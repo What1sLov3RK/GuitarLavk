@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="container py-5">
-    <h1>Register</h1>
+<div class="flex-column">
     <form method="POST" style="color:white">
+        <h1>Register</h1>
         {% csrf_token %}
         {% for register_field in form %}
-            <p>
-                <label class="form-label" for="{{ register_field.id_for_label }}">{{ register_field.label }}</label>
+        <p>
+            <label class="form-label" for="{{ register_field.id_for_label }}">{{ register_field.label }}</label>
                 {{ register_field }}
-            </p>
-            <div class="form-error">{{ register_field.errors }}</div>
+        </p>
+        <div class="form-error">{{ register_field.errors }}</div>
         {% endfor %}
         <button class="submit" type="submit">Register</button>
     </form>

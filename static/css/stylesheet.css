@@ -128,7 +128,7 @@ html{
     color: white;
     border: 1px solid black;
     width: 15px;
-    height: px;
+    height: fit-content;
     text-decoration: none;
     border-radius: 10px;
     position: absolute;
@@ -684,10 +684,6 @@ footer{
     padding-bottom:10px;
 }
 
-.cart-item div{
-
-}
-
 #checkout {
     float: right;
     width: 35%;
@@ -756,8 +752,6 @@ input[type="submit"],
     align-self: center;
     transition: background 0.2s ease, transform 0.1s ease;
 }
-
-
 
 button[type="submit"]:hover,
 input[type="submit"]:hover,
@@ -867,9 +861,10 @@ label {
 .link-order-details{
     text-decoration: none;
     color: rgba(255,255,255,0.8);
+    margin-bottom: 4px;
 }
 
-#orders-view-container{
+#order-view-container{
     display: flex;
     flex-flow: column;
     height: fit-content;
@@ -878,4 +873,12 @@ label {
 
 #orders-view-text{
     margin-bottom: 20px;
+}
+
+
+#orders-container{
+    display: flex;
+    color: white;
+    flex-flow: column;
+    padding-left: 30px;
 }

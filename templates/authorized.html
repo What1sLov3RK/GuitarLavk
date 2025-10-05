@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-<div id="orders-view-container">
-    <h1 id="orders-view-text">My Orders:</h1>
+<div id="orders-container">
+    <h1>My Orders:</h1>
     {% for order in orders %}
     <a href="{% url 'order' order_id=order.id %}" class="link-order-details">Order #{{ order.id }}</a>
-        <br>
     {% endfor %}
     <p><a href="{% url 'logout' %}">Logout</a></p>
 </div>

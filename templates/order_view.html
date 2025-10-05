@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+<div id="order-view-container">
     <h1 style="color:white">My Orders:</h1>
     <p style="color:white">
         Order #{{ order.id }}<br>
@@ -29,4 +30,5 @@
             <div class="cart-item-price">{{ item.price }} $</div>
         </div>
     {% endfor %}
+</div>
 {% endblock %}

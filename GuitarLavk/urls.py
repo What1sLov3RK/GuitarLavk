@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django.urls import path
-from guitarlavka import views
 from guitarlavka.views import (
     Home, Catalogue, Product_view,
     RegisterUser, LoginUser, Cabinet,
@@ -24,5 +23,7 @@ urlpatterns = [
     path('remove-from-cart/<int:cart_item_id>/', remove_from_cart, name='remove_from_cart'),
     path('cart/order_success/', order_success, name='order_success'),
     path('logout/', logout_view, name='logout'),
-]\
-              + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

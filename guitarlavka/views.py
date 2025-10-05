@@ -18,14 +18,14 @@ class Home(DataMixin, View):
     context_object_name = 'product', 'cart_quantity',
 
     def get_queryset(self):
-        return self.model.objects.all()[:5]
+        return self.model.objects.all() [:5]
 
     def get(self, request, *args, **kwargs):
         products = self.get_queryset()
         cart = self.cart(request)
         cart_quantity = self.cart_quantity(cart)
         context = {
-            self.context_object_name[0]: products,
+            self.context_object_name [0]: products,
             'cart_quantity': cart_quantity,
         }
 
@@ -42,7 +42,7 @@ class Catalogue(DataMixin, View):
         return self.model.objects.all()
 
     def form_valid(self, form):
-        categories = form.cleaned_data['categories']
+        categories = form.cleaned_data ['categories']
         return categories
 
     def form_invalid(self, form):
@@ -76,8 +76,8 @@ class Product_view(DataMixin, View):
         cart_quantity = self.cart_quantity(cart)
         product = get_object_or_404(self.model, slug=product_slug)
         context = {
-            self.context_object_name[0]: product,
-            self.context_object_name[1]: cart_quantity,
+            self.context_object_name [0]: product,
+            self.context_object_name [1]: cart_quantity,
         }
         return render(request, self.template_name, context)
 
@@ -122,15 +122,15 @@ class Cart_view(DataMixin, View):
         cart = self.cart(request)
         cart_item = cart.get_cart_items()
         if cart_item.count() > 0:
-            first_name = form.cleaned_data['first_name']
-            last_name = form.cleaned_data['last_name']
-            telephone = form.cleaned_data['telephone']
-            address = form.cleaned_data['address']
-            comment = form.cleaned_data['comment']
+            first_name = form.cleaned_data ['first_name']
+            last_name = form.cleaned_data ['last_name']
+            telephone = form.cleaned_data ['telephone']
+            address = form.cleaned_data ['address']
+            comment = form.cleaned_data ['comment']
             with transaction.atomic():
                 order = self.model.objects.create(address=address, comment=comment,
-                                                      price=cart.get_total_price(), telephone=telephone,
-                                                      first_name=first_name, last_name=last_name)
+                                                  price=cart.get_total_price(), telephone=telephone,
+                                                  first_name=first_name, last_name=last_name)
                 if not request.user.is_anonymous:
                     order.user = request.user
                     order.save()
@@ -177,6 +177,14 @@ class RegisterUser(DataMixin, CreateView):
     template_name = 'register.html'
     success_url = reverse_lazy('login')
 
+    def get(self, request, *args, **kwargs):
+        cart = self.cart(request)
+        cart_quantity = self.cart_quantity(cart)
+        context = {
+            'cart_quantity': cart_quantity,
+        }
+        return render(request, self.template_name, context)
+
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         return dict(list(context.items()))
@@ -197,6 +205,14 @@ class LoginUser(DataMixin, LoginView):
         context = super().get_context_data(**kwargs)
         return dict(list(context.items()))
 
+    def get(self, request, *args, **kwargs):
+        cart = self.cart(request)
+        cart_quantity = self.cart_quantity(cart)
+        context = {
+            'cart_quantity': cart_quantity,
+        }
+        return render(request, self.template_name, context)
+
 
 class Cabinet(DataMixin, View):
     template_name = 'authorized.html'
@@ -205,9 +221,11 @@ class Cabinet(DataMixin, View):
     def get(self, request):
         user = request.user
         orders = reversed(self.model.objects.filter(user=user))
-
+        cart = self.cart(request)
+        cart_quantity = self.cart_quantity(cart)
         context = {
             'orders': orders,
+            'cart_quantity': cart_quantity,
         }
         return render(request, 'authorized.html', context)
 
@@ -217,22 +235,24 @@ class OrderView(DataMixin, View):
     model = Order
 
     def get(self, request, order_id):
-
         order = self.model.objects.get(id=order_id)
         order_items_ids = order.order_items.values_list('product_id', flat=True)
         products = Product.objects.filter(slug__in=order_items_ids)
         quantity = reversed(order.order_items.values_list('quantity', flat=True))
         ziper = zip(products, quantity)
+        cart = self.cart(request)
+        cart_quantity = self.cart_quantity(cart)
         context = {
             'order': order,
             'order_items': ziper,
+            'cart_quantity': cart_quantity,
         }
         return render(request, 'order_view.html', context)
 
 
 def logout_view(request):
     logout(request)
-    return redirect('home')
+    return redirect('login')
 
 
 def order_success(request, order):

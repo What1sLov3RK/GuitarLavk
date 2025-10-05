@@ -659,18 +659,27 @@ footer{
     width:100%;
 }
 
-#cart-top{
-    width:100%;
+#cart-top {
+    width: 65%;
+    float:right;
     display: grid;
-    grid-template-columns:2fr 6.6fr 2.5fr 7fr 10fr;
+    grid-template-columns: 8.2fr 8.5fr 17.5fr 6.5fr 6.5fr;
     grid-template-rows: 40px;
-    border-bottom:2px solid rgba(255, 255, 255, 0.2);
-    color:rgba(255, 255, 255, 0.7);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 10px;
+}
+
+#cart-top > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5px;
+    font-weight: bold;
 }
 
 #cart-top div{
     display:flex;
-    justify-content: center;
     padding-top:6px;
 }
 
@@ -685,7 +694,7 @@ footer{
 }
 
 #checkout {
-    float: right;
+    float: left;
     width: 35%;
     color: white;
     padding-left: 40px;
@@ -693,7 +702,6 @@ footer{
     flex-direction: column;
     gap: 5px;
 }
-
 
 form {
     display: flex;

@@ -246,4 +246,4 @@ def logout_view(request):
 
 
 def order_success(request, order):
-    return render(request, 'order_success.html', {'order_id': order.id})
+    return render(request, 'order_success.html', {'order_id': order.id, 'cart_quantity': 0})

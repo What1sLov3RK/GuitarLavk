@@ -180,14 +180,12 @@ class RegisterUser(DataMixin, CreateView):
     def get(self, request, *args, **kwargs):
         cart = self.cart(request)
         cart_quantity = self.cart_quantity(cart)
+        form = self.get_form()
         context = {
             'cart_quantity': cart_quantity,
+            'form': form,
         }
-        return render(request, self.template_name, context)
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return dict(list(context.items()))
+        return self.render_to_response(context)
 
     def form_valid(self, form):
         user = form.save()
@@ -201,17 +199,15 @@ class LoginUser(DataMixin, LoginView):
     next_page = reverse_lazy('cabinet')
     redirect_authenticated_user = True
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return dict(list(context.items()))
-
     def get(self, request, *args, **kwargs):
         cart = self.cart(request)
         cart_quantity = self.cart_quantity(cart)
+        form = self.get_form()
         context = {
             'cart_quantity': cart_quantity,
+            'form': form,
         }
-        return render(request, self.template_name, context)
+        return self.render_to_response(context)
 
 
 class Cabinet(DataMixin, View):

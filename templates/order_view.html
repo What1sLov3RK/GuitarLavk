@@ -11,23 +11,23 @@
         Order price: {{ order.price }} <br>
     </p>
 
-    {% for item, quantity in order_items %}
+    {% for product, quantity in order_items %}
         <div class="cart-item">
             <div></div>
             <div class="cart-item-picture">
-                <img src="{{ item.product.picture.url }}" alt="product image">
+                <img src="{{ product.picture.url }}" alt="product image">
             </div>
             <div class="cart-item-description">
-                {{ item.type }},
-                {{ item.brand }}
-                {{ item.model }}
+                {{ product.type }},
+                {{ product.brand }}
+                {{product.model }}
                 <br>
-                {{ item.description }}
+                {{ product.description }}
             </div>
             <div class="cart-item-quantity">
                 {{ quantity }}
             </div>
-            <div class="cart-item-price">{{ item.price }} $</div>
+            <div class="cart-item-price">{{ product.price }} $</div>
         </div>
     {% endfor %}
 </div>

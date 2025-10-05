@@ -1,27 +1,36 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block content %}
-    <div id="product-wrapper">
-    <div class="test"></div>
-        <div id="product-picture">
-            <img src="{{product.picture.url}}" alt="product image">
-        </div>
-            <div class="test"></div>
-            <div id="product-information"><p id="product-type">{{product.type}}</p>
-                              <p id="product-brand-and-model">{{product.brand}} {{product.model}}</p>
-                              <p class="product-text">Гитара которая удивляет своим звуком и качеством, отлично лежит в руках.
-                                  Верхняя дека из ели, нижняя и обечайка из красного дерева, классический набор
-                                  который делает звук ярким и объемным...</p>
-                              <h2 id="product-price">{{product.price}} $</h2>
-            <a id="button-buy" href="{% url 'add_to_cart' product_slug=product.slug %}">
-                <p>В кошик</p>
-            </a>
-            </div>
-            <div class="test"></div>
-            <div id="product-description">
-            Опис товару:
 
-            {{ product.description }}
-            </div>
+{% block content %}
+<div id="product-wrapper">
+    <div class="test"></div>
+
+    <div id="product-picture">
+        <img src="{{ product.picture.url }}" alt="product image">
     </div>
+
+    <div class="test"></div>
+
+    <div id="product-information">
+        <p id="product-type">{{ product.type }}</p>
+        <p id="product-brand-and-model">{{ product.brand }} {{ product.model }}</p>
+        <p class="product-text">
+            A guitar that amazes with its sound and quality, fits perfectly in the hands.
+            Top made of spruce, back and sides made of mahogany, a classic set
+            that makes the sound bright and full...
+        </p>
+        <h2 id="product-price">{{ product.price }} $</h2>
+        <a id="button-buy" href="{% url 'add_to_cart' product_slug=product.slug %}">
+            <p>Add to cart</p>
+        </a>
+    </div>
+
+    <div class="test"></div>
+
+    <div id="product-description">
+        Product description:
+
+        {{ product.description }}
+    </div>
+</div>
 {% endblock %}

@@ -4,19 +4,19 @@
 {% block content %}
     <div id="catalogue-wrapper">
         <div id="filters-text">
-            <h2>Каталог</h2>
+            <h2>Catalogue</h2>
             <br>
         </div>
         <div id="catalogue-sort">
-            <span>Кількість товарів: {{ count }}</span>
-            <span id="catalogue-sort-available">В наявності
+            <span>Number of products: {{ count }}</span>
+            <span id="catalogue-sort-available">In stock
                 <input type="checkbox" class="checkbox-catalogue-sort-available">
             </span>
 
         </div>
         <div id="catalogue-filters">
             <form method="get">
-                <button type="submit" id="submit_filters">Застосувати фільтри</button>
+                <button type="submit" id="submit_filters">Apply filters</button>
                 {{ category_filter_form.categories }}
             </form>
         </div>
@@ -30,7 +30,7 @@
                              <p class="card-text">
                                  <span class="card-name">{{product.type}} {{ product.brand }}</span>
                                  <span class="card-model">{{ product.model }}</span>
-                                 <span>Ціна: {{ product.price }}$</span>
+                                 <span>Price: {{ product.price }}$</span>
                             </p>
                         </div>
                      </div>

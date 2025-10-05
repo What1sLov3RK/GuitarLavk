@@ -4,18 +4,18 @@
 {% block content %}
 <div id="cart-wrapper">
     <div id="cart-top">
-        <div>Найменування</div>
-        <div>Кількість</div>
-        <div>Ціна</div>
+        <div>Item Name</div>
+        <div>Quantity</div>
+        <div>Price</div>
     </div>
 
     <div id="checkout">
-        <h2>Оформлення замовлення</h2>
+        <h2>Checkout</h2>
         <br>
         <form method="POST">
             {% csrf_token %}
             {{ order_form.as_p }}
-            <h4>До оплати: {{ total_price }} $</h4>
+            <h4>Total: {{ total_price }} $</h4>
             <button type="submit" id="button-order-submit">Submit Order</button>
         </form>
     </div>

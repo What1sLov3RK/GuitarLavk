@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Мої замовлення:</h1>
+    <h1>My Orders:</h1>
     {% for order in orders %}
-    <a href="{% url 'order' order_id=order.id %}" class="link-order-details">Замовлення #{{ order.id }}</a>
+    <a href="{% url 'order' order_id=order.id %}" class="link-order-details">Order #{{ order.id }}</a>
         <br>
     {% endfor %}
 <p><a href="{% url 'logout' %}">Logout</a></p>

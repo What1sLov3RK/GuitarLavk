@@ -4,20 +4,22 @@
 {% block content %}
 <div id="cart-wrapper">
     <div id="cart-top">
+        <div></div>
         <div>Item Name</div>
         <div>Quantity</div>
         <div>Price</div>
     </div>
 
     <div id="checkout">
-        <h2>Checkout</h2>
-        <br>
-        <form method="POST">
-            {% csrf_token %}
-            {{ order_form.as_p }}
-            <h4>Total: {{ total_price }} $</h4>
-            <button type="submit" id="button-order-submit">Submit Order</button>
-        </form>
+        <div id="checkout-form-container"></div>
+            <form method="POST">
+                <h2>Checkout</h2>
+                {% csrf_token %}
+                {{ order_form.as_p }}
+                <h4>Total: {{ total_price }} $</h4>
+                <button type="submit" id="submit-checkout">Submit Order</button>
+            </form>
+        </div>
     </div>
 
     {% for item in cart_items %}
@@ -27,7 +29,6 @@
         </div>
         <div class="cart-item-description">
             {{ item.product.type }}, {{ item.product.brand }} {{ item.product.model }}<br>
-            {{ item.product.description }}
         </div>
         <div class="cart-item-quantity">
             <a class="cart-quantity-buttons" href="{% url 'remove_from_cart' cart_item_id=item.id %}">-</a>
@@ -37,5 +38,4 @@
         <div class="cart-item-price">{{ item.get_item_price }} $</div>
     </div>
     {% endfor %}
-</div>
 {% endblock %}

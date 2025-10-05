@@ -267,7 +267,7 @@ html{
     display: flex;
     flex-flow: column;
     align-items: center;
-    height: 1400px;
+    height: fit-content;
     background-color: #131218;
 }
 
@@ -343,14 +343,14 @@ html{
     background:rgb(0,0,0,0.59)
 }
 
-.services h3:hover{
+.services:hover h3 {
     transition-duration: 0.19s;
-    display:flex;
+    display: flex;
     justify-content: center;
-    align-items:center;
-    color:white;
+    align-items: center;
+    color: white;
     text-decoration: none;
-    height:400px;
+    height: 400px;
 }
 
 .services h3:active{
@@ -504,38 +504,81 @@ footer{
     background-color: #131218;
 }
 
+#catalogue-filters {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: fit-content;
+    margin-top: 15px;
+}
+
+#catalogue-filters form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+}
+
+#catalogue-filters .category-checkboxes {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
+}
+
+#catalogue-filters .checkbox-container {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    user-select: none;
+    color: white;
+    font-size: 16px;
+    display: inline-block;
+}
+
+#catalogue-filters .checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+#catalogue-filters .checkbox-container .checkmark {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 20px;
+    width: 20px;
+    background-color: black;
+    border: 2px solid #333;
+    border-radius: 4px;
+}
+
+#catalogue-filters .checkbox-container .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+#catalogue-filters .checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+    left: 5px;
+    top: 2px;
+    width: 8px;
+    height: 14px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
 
 #catalogue-products{
     display: grid;
     grid-template-columns: repeat(auto-fit,220px);
     grid-template-rows:repeat(auto-fit,400px);
     grid-gap: 20px;
-}
-
-#catalogue-filters{
-    display:flex;
-    justify-content: center;
-}
-
-#submit_filters{
-    text-align: center;
-    color:white;
-    background-color:#131218;
-    border:1px solid rgba(255,255,255,0.3);
-    border-radius: 5px;
-    margin-bottom:10px;
-}
-
-#catalogue-filters form{
-    margin-top:15px;
-}
-
-#catalogue-filters #id_categories {
-    display:flex;
-    justify-content: center;
-    align-content: center;
-    flex-flow: column;
-    color:white;
 }
 
 #product-wrapper{
@@ -617,9 +660,9 @@ footer{
 }
 
 #cart-top{
-    width:65%;
+    width:100%;
     display: grid;
-    grid-template-columns: 9fr 2fr 2fr;
+    grid-template-columns:2fr 6.6fr 2.5fr 7fr 10fr;
     grid-template-rows: 40px;
     border-bottom:2px solid rgba(255, 255, 255, 0.2);
     color:rgba(255, 255, 255, 0.7);
@@ -644,16 +687,107 @@ footer{
 .cart-item div{
 
 }
-#checkout{
-    float:right;
-    width:35%;
-    height:400px;
-    color:white;
-    padding-left:40px;
+
+#checkout {
+    float: right;
+    width: 35%;
+    color: white;
+    padding-left: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
-#checkout h2{
-    display:grid;
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+form h2, form h1 {
+    color: white;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    background-color: #1b1a20;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 15px;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #4f46e5;
+    background-color: #222128;
+}
+
+::placeholder {
+    color: rgba(255,255,255,0.5);
+}
+
+button[type="submit"],
+input[type="submit"],
+.submit {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 8px 25px;
+    color: white;
+    background-color: #131218;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: center;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+
+
+button[type="submit"]:hover,
+input[type="submit"]:hover,
+.submit:hover {
+    background-color: rgba(255, 214, 0, 0.8);
+    transform: scale(1.02);
+}
+
+.errorlist{
+    color: #ff7675;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+label {
+    color: white;
+    font-size: 15px;
+    font-weight: 400;
+    margin-bottom: 4px;
+}
+
+.form-section {
+    background-color: #131218;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    margin: 15px auto;
+    width: fit-content;
 }
 
 .cart-item-picture{
@@ -668,6 +802,7 @@ footer{
 }
 
 .cart-item-description{
+    padding-left: 10px;
     color:rgba(255,255,255,0.7);
     display:flex;
 }
@@ -698,96 +833,49 @@ footer{
     color: rgba(255,255,255,1)
 }
 
+#checkout h2 {
+    margin-bottom: 10px;
+    margin-right: 22%;
+    font-size: 24px;
+    color: rgba(255,255,255,0.9);
+}
+
+#checkout > form {
+    width: 75%;
+}
+
 #checkout > form > p {
-    display:flex;
-    justify-content:space-between;
-    width:225px;
+    display: flex;
+    justify-content: flex-end;
+    width: 65%;
+    height: 40px;
 }
 
-#checkout > form > p > textarea {
-    margin-top:4px;
-    width:140px;
-    height:20px;
+#checkout > form > p > input {
+    width: 140px;
+    height: 25px;
 }
 
-#button-order-submit{
-    border-radius: 5px;
-    background-color: rgba(255,255,255,0.7);
-    border: 0;
+#checkout > form > p> label {
+    margin-right: 5px;
+}
+
+#submit-checkout{
+    margin-right: 22%;
 }
 
 .link-order-details{
-    margin-top:200px;
     text-decoration: none;
-    color:rgba(255,255,255,0.8);
+    color: rgba(255,255,255,0.8);
 }
 
-ul {
-
-    list-style: none;
-    padding: 10px 0 0 0;
-    margin: 0;
+#orders-view-container{
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-ul li {
-    display: flex;
-    align-items: center;
-}
-
-ul li input[type="checkbox"] {
-    display: none;
-}
-
-ul li label {
-    position: relative;
+    flex-flow: column;
+    height: fit-content;
     padding-left: 30px;
-    cursor: pointer;
-    display: inline-block;
 }
 
-ul li label:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 20px;
-    height: 20px;
-    border: 2px solid #333;
-    border-radius: 4px;
-    background-color: #fff;
-}
-
-ul li input[type="checkbox"]:checked + label:before {
-    background-color: #000;
-    border-color: #000;
-}
-
-ul li input[type="checkbox"]:checked + label:after {
-    content: "";
-    position: absolute;
-    left: 6px;
-    top: 2px;
-    width: 6px;
-    height: 12px;
-    border: solid #fff;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-}
-
-#submit_filters {
-    display: block;
-    margin: 10px auto 0 auto;
-    padding: 10px 20px;
-    background-color: #2196F3;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-#submit_filters:hover {
-    background-color: #1976D2;
+#orders-view-text{
+    margin-bottom: 20px;
 }

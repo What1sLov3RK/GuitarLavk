@@ -18,7 +18,7 @@ class Home(DataMixin, View):
     context_object_name = 'product', 'cart_quantity',
 
     def get_queryset(self):
-        return self.model.objects.all() [:5]
+        return self.model.objects.all()[:5]
 
     def get(self, request, *args, **kwargs):
         products = self.get_queryset()
@@ -155,7 +155,7 @@ class Cart_view(DataMixin, View):
         cart_quantity = self.cart_quantity(cart)
         cart_items = cart.get_cart_items()
         total_price = cart.get_total_price()
-        form = self.form_class(request.GET)
+        form = self.form_class()
         context = {
             'cart_items': cart_items,
             'total_price': total_price,

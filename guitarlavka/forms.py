@@ -17,24 +17,21 @@ class CategoryFilterForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super(CategoryFilterForm, self).__init__(*args, **kwargs)
-        self.fields['categories'].queryset = Categories.objects.all()
+        self.fields ['categories'].queryset = Categories.objects.all()
 
 
 class RegisterForm(UserCreationForm):
-    first_name = forms.CharField(label='Name', widget=forms.TextInput(attrs={'class': 'form-input'}))
-    last_name = forms.CharField(label='Surname', widget=forms.TextInput(attrs={'class': 'form-input'}))
-    username = forms.CharField(label='Login', widget=forms.TextInput(attrs={'class': 'form-input'}))
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'form-input'}))
-    password2 = forms.CharField(label='Password verification', widget=forms.PasswordInput(attrs={'class': 'form-input'}))
-    email = forms.EmailField(label='Email', required=True)
-
+    username = forms.CharField(label='Username', widget=forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Input your username'}), error_messages={'required': 'Input your username'})
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'form-input', 'placeholder': 'Input your password'}), error_messages={'required': 'Input password password'})
+    password2 = forms.CharField(label='Password verification',
+                                widget=forms.PasswordInput(attrs={'class': 'form-input', 'placeholder': 'Input your password again'}),
+                                error_messages={'required': 'Input verification password'})
+    email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'placeholder': 'Input your email'}), required=True, error_messages={'required': 'Input your email'})
 
     class Meta:
         model = User
-        fields = ("first_name", "last_name", "username", "email", "password1", "password2")
+        fields = ("username", "email", "password1", "password2")
         widgets = {
-            'first_name': forms.TextInput(attrs={'class': 'form-input'}),
-            'last_name' : forms.TextInput(attrs={'class': 'form-input'}),
             'username': forms.TextInput(attrs={'class': 'form-input'}),
             'email': forms.TextInput(attrs={'class': 'form-input'}),
             'password1': forms.PasswordInput(attrs={'class': 'form-input'}),
@@ -43,11 +40,21 @@ class RegisterForm(UserCreationForm):
 
 
 class OrderForm(forms.Form):
-    first_name = forms.CharField(widget=forms.Textarea(attrs={'class': "Order-form"}), empty_value='Імя', error_messages={'required': 'dick'})
-    last_name = forms.CharField(widget=forms.Textarea(attrs={'class': "Order-form"}), empty_value='Прізвище')
-    telephone = forms.CharField(widget=forms.Textarea(attrs={'class': "Order-form"}), empty_value='Номер телефону')
-    address = forms.CharField(widget=forms.Textarea(attrs={'class': "Order-form"}), empty_value='Адреса')
-    comment = forms.CharField(widget=forms.Textarea(attrs={'class': "Order-form"}), empty_value='Коментар', required=False)
+    first_name = forms.CharField(
+        widget=forms.TextInput(attrs={'class': "Order-form"}),
+        error_messages={'required': 'Please enter your first name'})
+    last_name = forms.CharField(
+        widget=forms.TextInput(attrs={'class': "Order-form"}),
+        required=False)
+    telephone = forms.CharField(
+        widget=forms.TextInput(attrs={'class': "Order-form"}),
+        required=False)
+    address = forms.CharField(
+        widget=forms.TextInput(attrs={'class': "Order-form"}),
+        required=False)
+    comment = forms.CharField(
+        widget=forms.TextInput(attrs={'class': "Order-form"}),
+        required=False)
 
     class Meta:
         model = Order

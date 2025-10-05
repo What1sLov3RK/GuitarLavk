@@ -101,7 +101,7 @@
         {% for product in product %}
         <a href="{% url 'product' product_slug=product.slug %}" class="product-card" id="product-cards-home-page">
             <div id="my-card" class="card">
-                <img class="card-image" src="{% static 'media/' %}{{ product.picture }}" alt="product">
+                <img class="card-image" src="{{ product.picture.url }}" alt="product">
                 <div class="card-body">
                     <p class="card-text">
                         <span class="card-name">{{ product.type }} {{ product.brand }}</span>

@@ -10,7 +10,7 @@
         <div class="cart-item">
         <div></div>
         <div class="cart-item-picture">
-            <img src="{{ MEDIA_ROOT }}/media/{{item.picture}}">
+            <img src="{{item.product.picture.url}}" alt="product image">
         </div>
         <div class="cart-item-description">
             {{ item.type }},

@@ -2,21 +2,29 @@
 {% load static %}
 
 {% block content %}
-    <div id="catalogue-wrapper">
-        <div id="filters-text">
-            <h2>Catalogue</h2>
-            <br>
-        </div>
-        <div id="catalogue-sort">
-            <span>Number of products: {{ count }}</span>
-        </div>
-        <div id="catalogue-filters">
-            <form method="get">
-                <button type="submit" id="submit_filters">Apply filters</button>
-                {{ category_filter_form.categories }}
-            </form>
-        </div>
-        <div id="catalogue-products">
+<div id="catalogue-wrapper">
+    <div id="filters-text">
+        <h2>Catalogue</h2>
+        <br>
+    </div>
+    <div id="catalogue-sort">
+        <span>Number of products: {{ count }}</span>
+    </div>
+    <div id="catalogue-filters">
+        <form method="get">
+            <button type="submit" id="submit_filters">Apply filters</button>
+            <div class="category-checkboxes">
+                {% for checkbox in category_filter_form.categories %}
+                    <label class="checkbox-container">
+                        {{ checkbox.tag }}
+                        {{ checkbox.choice_label }}
+                        <span class="checkmark"></span>
+                    </label>
+                {% endfor %}
+            </div>
+        </form>
+    </div>
+    <div id="catalogue-products">
         {% if products %}
             {% for product in products %}
                  <a href="{% url 'product' product_slug=product.slug %}" class="product-card">
@@ -35,6 +43,6 @@
         {% else %}
             <h1 style="color:white;">No products found</h1>
         {% endif %}
-        </div>
     </div>
+</div>
 {% endblock %}

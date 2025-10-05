@@ -722,4 +722,49 @@ footer{
     color:rgba(255,255,255,0.8);
 }
 
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+ul li input[type="checkbox"] {
+    display: none;
+}
+
+ul li label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+ul li label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #333;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+ul li input[type="checkbox"]:checked + label:after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 6px;
+    height: 12px;
+    border: solid #2196F3;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
 

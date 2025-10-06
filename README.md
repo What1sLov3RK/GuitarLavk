@@ -62,8 +62,46 @@ guitarlavochka/
 └── .env.example # Example environment file (see below) 
 ---
 
-## ⚙️ Installation and Setup
+### 🐳 Docker Setup
 
+The project includes a ready-to-use Dockerfile for easy deployment (e.g. on Railway or Render).
+It installs dependencies, collects static files, and launches Gunicorn as the production WSGI server.
+
+Dockerfile overview
+```dockerfile
+FROM python:3.9-slim
+
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libjpeg-dev \
+    zlib1g-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY requirements.txt /app/
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . /app/
+
+ENV DJANGO_SETTINGS_MODULE=GuitarLavk.settings \
+    PYTHONUNBUFFERED=1
+
+CMD ["sh", "-c", "python manage.py collectstatic --noinput && gunicorn GuitarLavk.wsgi:application --bind 0.0.0.0:${PORT:-8000}"]
+```
+
+## Run locally
+```bash
+docker build -t guitarlavka .
+docker run -p 8000:8000 --env-file .env guitarlavka
+```
+
+## Then open:
+```cpp
+http://127.0.0.1:8000/
+```
+
+## ⚙️ Installation and Setup
 ### 1. Clone the repository
 
 ```bash
@@ -91,7 +129,7 @@ pip install -r requirements.txt
 
 ### 4. Configure environment variables
 ```bash
-Copy the example environment file and edit it:
+cp .env.example .env
 ```
 
 ### 5. Apply migrations
@@ -119,7 +157,7 @@ Custom design via stylesheet.css
 Fixed desktop layout 
 
 ## 🧰 Tech Stack
-Backend: Django (Python 3.11+)  
+Backend: Django (Python 3.9+)  
 Frontend: HTML, CSS, Bootstrap  
 Database: SQLite (default)  
 Templates: Django Templates 

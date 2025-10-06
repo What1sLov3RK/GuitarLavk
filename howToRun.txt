@@ -1,9 +1,0 @@
-1)build docker image via:
-docker build -t guitarlavk:latest .
-
-2)run with docker
-
-
-
-
-

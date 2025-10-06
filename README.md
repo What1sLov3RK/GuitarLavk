@@ -125,7 +125,7 @@ Database: SQLite (default)
 Templates: Django Templates 
 
 ## 🧑‍💻 Development Notes
-All static assets are stored in /static/
-Product images are under /media/product_images/
+All static assets are stored in /static/        
+Product images are under /media/product_images/     
 Universal forms styling ensures visual consistency  
 Use python manage.py collectstatic before deployment if needed  

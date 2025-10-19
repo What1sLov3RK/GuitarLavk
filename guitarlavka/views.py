@@ -9,7 +9,6 @@ from django.db import transaction
 from django.views.generic import View, CreateView
 from django.contrib.auth.forms import AuthenticationForm
 from .utils import DataMixin
-from django.contrib.auth.decorators import login_required
 
 
 class Home(DataMixin, View):

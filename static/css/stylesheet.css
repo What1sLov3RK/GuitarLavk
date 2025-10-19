@@ -691,6 +691,7 @@ footer{
     border-bottom:2px solid rgba(255, 255, 255, 0.2);
     margin-top:10px;
     padding-bottom:10px;
+    float:right;
 }
 
 #checkout {
@@ -844,6 +845,7 @@ label {
 
 #checkout > form {
     width: 75%;
+    height: 100%;
 }
 
 #checkout > form > p {

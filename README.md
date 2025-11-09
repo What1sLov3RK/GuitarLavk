@@ -3,6 +3,7 @@
 **GuitarLavka** is a Django-based online guitar shop where users can browse, filter, and purchase guitars, accessories, and related musical equipment.  
 The project includes product pages, a cart system, and a simple checkout form.
 
+🌐 **Live Demo:** [GuitarLavka on Railway](https://faithful-vision-guitarlavka.up.railway.app/)
 ---
 
 ## 📁 Project Structure

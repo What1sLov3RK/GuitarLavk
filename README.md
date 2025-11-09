@@ -8,7 +8,7 @@ The project includes product pages, a cart system, and a simple checkout form.
 
 ## 📁 Project Structure
 
-guitarlavochka/     
+GuitarLavka/     
 │   
 ├── css/ # Bootstrap and other CSS files    
 │   
